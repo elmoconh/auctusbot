@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <title>AuctusBot</title>
+  <head>
+ 
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  </head>
+    <style>
+      body {
+        font-family:Arial, Helvetica, sans-serif;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        padding: 2%;
+      }
+ 
+      #chatbox {
+       
+        width: 100%;
+        margin-top: 60px;
+      }
+      #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+      }
+      #textInput {
+        width: 99%;
+        height: 2%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        background-color:rgb(7, 128, 241); 
+        font-size: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-bottom: 3px solid black;
+
+      }
+      .userText span {
+        border-radius: 5px;
+      }
+      .botText {
+        color: white;
+        background-color: rgb(241, 7, 7);
+        font-size: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-bottom: 3px solid black;
+
+      }
+      .botText span {
+        padding: 10px;
+        border-radius: 5px;
+     }
+      .boxed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        margin-top: 60px;
+        border-radius: 5px;
+      }
+     
+
+      .nameinput{
+        bottom: 0;
+        width: 100%;
+        margin: 8px 0;
+        box-sizing: border-box;
+        position: fixed;
+        border-radius: 5px;
+     
+      }
+  .message {
+    width: 9%;
+    height: 100px;
+    border:1px solid #000000;
+    padding: 1%; 
+    background-color: rgb(69,90,100);
+    font-family: 'Times New Roman', Times, serif;
+    margin: 5%;
+    font-size: larger;
+    border-radius: 5%;
+
+
+    }
+
+
+    </style>
+  </head>
+  <body >
+    <center>
+      <h1>
+      AuctusBot      
+      </h1>
+    </center>
+    <div>
+      <div>
+        <div id="chatbox">
+        </div>
+      </div>
+        <div id="userInput">
+          <input id="nameInput" type="text" name="msg"  style="bottom:0; width: 95%;height: 2%; position: fixed; border: 1px solid #000000" placeholder="Alguna Consulta ?" />
+        </div>
+<script>
+        function getBotResponse() {
+          var rawText = $("#nameInput").val();
+          var userHtml = '<table class="table table-striped table-bordered table-condensed"><tr> <th style= "width: 100px; text-align: center; color: blue; background-color: azure;">Tú</th> <th>'+rawText+'</th></tr></table>';
+          $("#nameInput").val("");
+          $("#chatbox").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<table class="table table-striped table-bordered table-condensed"><tr> <th style="width: 100px; text-align: center; color: blue; background-color: azure;">sofIA</th> <th>'+data+'</th></tr></table>';
+            $("#chatbox").append(botHtml);
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#nameInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+</script>
+</div>
+</body>
+</html>

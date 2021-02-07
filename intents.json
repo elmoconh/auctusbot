@@ -1,0 +1,32 @@
+{"intents": [
+    {"tag": "1",
+     "patterns": ["Hola","un saludo", "hello"],
+     "responses": ["Hola Que tal! me llamo sofia como te puedo ayudar?", "un gusto de verte"],
+     "context_set": ""
+    },
+    {"tag": "2",
+     "patterns": ["museo de putaendo", "quiero saber mas"],
+     "responses": ["Okay, este museo no recibe donaciones"],
+     "context_set": ""
+    },
+    {"tag": "3",
+     "patterns": ["adios"],
+     "responses": ["nos vemos"],
+     "context_set": ""
+    },
+    {"tag": "4",
+     "patterns": ["direccion", "dirección"],
+     "responses": ["O Higgins 35 Region de Valparaiso / Putaendo"],
+     "context_set": ""
+    },
+    {
+    "tag": "5",
+    "patterns": ["horario"],
+    "responses": ["Lunes a viernes de 10:30 a 18:00 hrs."],
+    "context_set": ""
+            
+
+
+    }
+]
+}
